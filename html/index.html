@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,24 +8,50 @@
     <title>Vue_test_1</title>
     <script src="./../js/vue.js" type="text/javascript" charset="utf-8"></script>
 </head>
+
 <body>
-   <div id="app">
-       {{ message }}
+    <div id="app">
+        {{ message }}
 
-       <span v-if="seen">Now you seen me</span>
-   </div> 
+        <span v-if="seen">Now you seen me</span>
 
-   <script>
-       var app = new Vue({
-           el: '#app',
-           data: {
-               message: 'Hello Vue',
-               seen: true
-           }
-       })
-       
-       app.message = 'I had changed message.'
-       app.seen = false
-   </script>
+        <ol>
+            <li v-for="todo in todos">
+                {{ todo.text }}
+            </li>
+        </ol>
+
+        <button v-on:click="reverseMessage">ReverseMessage</button>
+
+        修改message内容: <input v-model="message">
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello Vue',
+                seen: true,
+                todos: [
+                    {text: 'Learn JavaScript'},
+                    {text: 'Learn Vue'},
+                    {text: 'Come on'}
+                ]
+            },
+            methods: {
+                reverseMessage: function() {
+                    this.message=this.message.split('').reverse().join('')
+                }
+            }
+        })
+
+        // 修改 message内容
+        app.message = 'I had changed message.'
+        // 隐藏seen的内容
+        app.seen = false
+        // todos数组中添加内容
+        app.todos.push({text: 'New item'})
+    </script>
 </body>
+
 </html>
