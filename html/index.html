@@ -22,8 +22,12 @@
         </ol>
 
         <button v-on:click="reverseMessage">ReverseMessage</button>
-
+        <br/>
         修改message内容: <input v-model="message">
+        <br/>
+        <span v-bind:title="news">
+            鼠标悬停显示此处动态绑定的title提示信息
+        </span>
     </div>
 
     <script>
@@ -36,7 +40,8 @@
                     {text: 'Learn JavaScript'},
                     {text: 'Learn Vue'},
                     {text: 'Come on'}
-                ]
+                ],
+                news: '页面加载于' + new Date().toLocaleString()
             },
             methods: {
                 reverseMessage: function() {
