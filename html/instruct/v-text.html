@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,19 +8,58 @@
     <title>v-text-learn</title>
     <script src="./../../js/vue.js"></script>
 </head>
+
 <body>
     <div id="app">
         <h2 v-text="msg+'~~'">被覆盖</h2>
         <h2>深圳{{ msg+"~~" }}</h2>
+        <!-- 默认b是不显示的 -->
+        {{b}} {{ foo }}
+
+    </div>
+
+    <div class="freeze">
+        {{ foo }}
     </div>
 
     <script>
+        var obj = {
+            foo: 'bar'
+        }
+
+        Object.freeze(obj)
+
+        // 在Vue中是不能嵌套不同vue实例上的监听，一般一个项目中就创建一个vue实例
+        var vue = new Vue({
+            el: '.freeze',
+            data: obj
+        })
+
         var vm = new Vue({
             el: "#app",
+            created: function() {
+                console.log('foo is:' + this.foo)
+            }, 
             data: {
-                msg: "hello, vue!"
+                msg: "hello, vue!",
+                b: "",
+                foo: "o"
             }
+       })
+
+        vm.$watch('b', function (newValue, oldValue) {
+            console.log('changeA', vm.b)
         })
+
+        // 前缀$: 为了与用户定义的property区分开
+        console.log(vue.$data === obj)
+
+
+    </script>
+
+    <script>
+
     </script>
 </body>
+
 </html>

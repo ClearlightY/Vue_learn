@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document指令缩写</title>
+    <script src="../../js/vue.js"></script>
+</head>
+<body>
+
+    <div id="app">
+        <!-- 完整语法 -->
+        <a v-bind:href="url" target="_blank">网址</a>
+
+        <!-- 缩写 -->
+        <a :href="url">网址</a>
+
+        <!-- 动态参数的缩写 -->
+        <a :[key]="url">网址</a>
+
+        <!-- 完整语法 -->
+        <a v-on:click="doSomething">onClick</a>
+
+        <!-- 缩写 -->
+        <a @click="doSomething">click</a>
+
+        <!-- 动态参数的缩写 -->
+        <a @[event]="doSomething">eventClick</a>
+    
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                url: "http://www.clearlight.com.cn",
+                key: "title",
+                event: "mouseenter"
+            },
+            methods: {
+                doSomething: function() {
+                    alert("hello body")
+                }
+            }
+        })
+    </script>
+
+</body>
+</html>
