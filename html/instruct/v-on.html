@@ -10,6 +10,8 @@
 <body>
 
     <div id="example2">
+        <button v-on:click="counter += 1"> Add 1 </button>
+        <p>The button above has been clicked {{ counter }} times.</p>
         <!-- 'greet' 是下面定义的方法名 -->
         <button v-on:click="greet">Greet</button>
         <button @click="say('hi')">Say hi</button>
@@ -20,7 +22,8 @@
         var vm = new Vue({
             el: '#example2',
             data: {
-                name: 'Vue.js'
+                name: 'Vue.js',
+                counter: 0
             },
             // 在 'methods' 对象中定义方法
             methods: {
