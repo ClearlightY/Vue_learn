@@ -22,9 +22,9 @@
         </ol>
 
         <button v-on:click="reverseMessage">ReverseMessage</button>
-        <br/>
+        <br />
         修改message内容: <input v-model="message">
-        <br/>
+        <br />
         <span v-bind:title="news">
             鼠标悬停显示此处动态绑定的title提示信息
         </span>
@@ -37,15 +37,15 @@
                 message: 'Hello Vue',
                 seen: true,
                 todos: [
-                    {text: 'Learn JavaScript'},
-                    {text: 'Learn Vue'},
-                    {text: 'Come on'}
+                    { text: 'Learn JavaScript' },
+                    { text: 'Learn Vue' },
+                    { text: 'Come on' }
                 ],
                 news: '页面加载于' + new Date().toLocaleString()
             },
             methods: {
-                reverseMessage: function() {
-                    this.message=this.message.split('').reverse().join('')
+                reverseMessage: function () {
+                    this.message = this.message.split('').reverse().join('')
                 }
             }
         })
@@ -55,7 +55,7 @@
         // 隐藏seen的内容
         app.seen = false
         // todos数组中添加内容
-        app.todos.push({text: 'New item'})
+        app.todos.push({ text: 'New item' })
     </script>
 </body>
 
