@@ -10,7 +10,13 @@
 
 <body>
     <div id="app">
-        <input v-model.trim="msg" placeholder="edit me">
+        <!-- 1. 修饰符: lazy 懒加载, 再输入Enter或失去光标则加载 -->
+        <input type="text" v-model.lazy="message">
+        <h2>{{message}}</h2>
+        <!-- 2. 修饰符: trim -->
+        <input type="number" v-model.number="age">
+        <h2>{{age}}--{{typeof age}}</h2>
+        <input v-model.trim="msg" type="text" placeholder="edit me">
         <p>Message is : {{ msg }}</p>
     </div>
 
@@ -18,7 +24,9 @@
         var vm = new Vue({
             el: "#app",
             data: {
-                msg: ''
+                message: '',
+                msg: '',
+                age: 0
             }
         })
     </script>
